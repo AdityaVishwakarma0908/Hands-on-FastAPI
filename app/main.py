@@ -1,12 +1,26 @@
-from fastapi import FastAPI, Response, status, HTTPException
+from fastapi import FastAPI, Response, status, HTTPException, Depends
 from fastapi.params import Body 
 from pydantic import BaseModel
 from typing import Optional
 from random import randrange
 import psycopg2
+from sqlalchemy.orm import session
 from psycopg2.extras import RealDictCursor
+from . import models
+from .database import engine, sessionlocal
+
+
+
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+def get_db():
+    db = sessionlocal()
+    try: 
+        yield db
+    finally:
+        db.close()
 
 class Post(BaseModel): #schema
     title: str
@@ -24,6 +38,10 @@ except Exception as error:
 @app.get("/")
 def root():
     return {"message": "Hay there !!! here is you app "} 
+
+@app.get("/sqlalchmey")
+def test_post(db: session = Depends(get_db)):
+    return {"status": "success"}
 
 @app.get("/posts") # getting all the ids
 def get_post():

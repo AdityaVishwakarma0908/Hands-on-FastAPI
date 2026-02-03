@@ -1,5 +1,14 @@
-# Hands-on-FastAPI
-Hay there ! these are the things and path functions from which I started learning FastAPI 
+# Hands-on FastAPI 🚀
 
-### FastAPI is a modern, high-performance web framework for building APIs with Python 3.8+, known for its exceptional speed, automatic interactive documentation, and use of standard Python type hints for data validation. It is widely used for building microservices, machine learning model serving APIs, and other high-performance backend systems. 
-Here I learned about different path funtion, handeling the user given data, Schemas etc ... 
+This repository contains my development journey with **FastAPI**. It features a full integration with **PostgreSQL** using `psycopg2` and data validation with **Pydantic**.
+
+---
+
+## 🛠 Project Features
+* **FastAPI Framework**: Modern, fast (high-performance) web framework.
+* **Database Integration**: Real-time connection to PostgreSQL.
+* **Data Schemas**: Uses Pydantic `BaseModel` for strict request body validation.
+* **Auto-Generated Docs**: Interactive Swagger UI documentation.
+
+---
+
